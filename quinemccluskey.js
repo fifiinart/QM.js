@@ -20,7 +20,9 @@ module.exports = class QuineMcCluskey {
   // Helper Methods
 
   /**
-   * Returns the binary value equivalent to the decimal value given
+   * Gets the binary value equivalent of a given decimal value
+   * @param {number} value - the decimal value to convert
+   * @returns {string} - the binary value equivalent
    */
   getBits(value) {
     let s = decToBin(value);
@@ -105,7 +107,7 @@ module.exports = class QuineMcCluskey {
 
       // Check if this subset covers the rest of the values
       if (tempValues.length == values.length &&
-        tempValues.every(function(u, i) {
+        tempValues.every(function (u, i) {
           return u === values[i]
         })) {
         newpowerset.push(subset);
@@ -315,10 +317,10 @@ module.exports = class QuineMcCluskey {
           result += this.variables[j];
         }
         if ((implicant.getValue()
-            .substring(j + 1)
-            .match(/-/g) || [])
+          .substring(j + 1)
+          .match(/-/g) || [])
           .length < implicant.getValue()
-          .length - j - 1 && implicant.getValue()[j] != "-") {
+            .length - j - 1 && implicant.getValue()[j] != "-") {
           result += " AND ";
         }
       }
